@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Taxon Photos</title>
+</head>
+<body>
+    {% for taxon in taxa %}
+    <table>
+        <tr>
+            <td>{{ taxon.taxon_name() }}</td>
+        </tr>
+        <tr>
+            {% for photo in taxon.tp_filenames() %}
+            <td>
+                 <div style="width:200px;height:200px;overflow:hidden">
+                     <img style="max-width:100%" src="/taxon_photos/{{ taxon.taxon_id }}/{{ photo.decode('ascii') }}" />
+                </div>
+            </td>
+            {% endfor %}
+        </tr>
+    </table>
+    {% endfor %} 
+                <div style="width:200px;height:200px;overflow:hidden">
+                    <img style="max-width:100%" src="" />
+                </div>
+</body>
+</html>

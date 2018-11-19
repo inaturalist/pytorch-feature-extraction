@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nearest Taxon Photo</title>
+</head>
+<body>
+    Your Photo:<br />
+    <div style="width: 200px; height:200px;overflow:hidden">
+        <img style="max-width:100%" src="/static/{{ user_photo }}" />
+    </div>
+    <br />
+    <table>
+        <tr>
+            <th>Taxon</th>
+            <th>Nearest Photo</th>
+            <th>Distance</th>
+        </tr>
+    {% for neighbor in neighbors %}
+        <tr>
+            <td>{{ neighbor.taxon.taxon_name() }}</td>
+            <td>
+            <div style="width:200px;height:200px;overflow:hidden">
+            <img style="max-width:100%" src="/taxon_photos/{{ neighbor.taxon.taxon_id }}/{{ neighbor.photoid }}.jpg" />
+            </div>
+            </td>
+            <td>{{ neighbor.distance }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+</body>
+</html>
